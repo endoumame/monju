@@ -29,7 +29,15 @@ git clone https://github.com/endoumame/monju ~/.claude/skills/monju
 
 T3 Code では、入力欄で `$` を打つとスキルの一覧が出ます。プロジェクト内（`<プロジェクト>/.claude/skills/`）に置いたスキルが一覧に出ない不具合が過去に報告されているので、出ないときは利用者単位の置き場を試してください。
 
-メンバーの呼び出しには `delegate_task` を使います。T3 Code v0.1.0 以降が必要です。それより古い場合や、ほかの環境では、`references/t3code.md` の代替手段で動きます。
+メンバーの呼び出し方は、環境に合わせて自動で切り替わります。
+
+| 環境 | 呼び出し方 |
+|---|---|
+| T3 Code v0.1.0 以降 | `delegate_task` で子スレッドとして呼ぶ |
+| herdr | 別のタブにペインを作り、そこでエージェントを起動して呼ぶ |
+| それ以外 | サブエージェントで呼ぶ。それもできなければ進行役が1人で書く簡易版 |
+
+herdr では、herdr の公式スキル（`npx skills add herdrdev/herdr --skill herdr -g`）も入れておくと、版によるコマンドの違いを吸収しやすくなります。
 
 ## 使い方
 
@@ -107,7 +115,9 @@ monju/
 ├── README.md                この文書
 ├── references/
 │   ├── members.md           メンバーの顔ぶれと依頼文
-│   ├── t3code.md            T3 Code での呼び出し方と代替手段
+│   ├── t3code.md            T3 Code での呼び出し方
+│   ├── herdr.md             herdr での呼び出し方
+│   ├── fallback.md          呼ぶ道具がないときの進め方
 │   ├── example.md           やりとりの見本
 │   └── theory.md            理論的根拠と限界
 └── assets/
